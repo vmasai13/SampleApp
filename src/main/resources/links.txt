@@ -1,0 +1,10 @@
+Database tables:
+----------------
+1. http://www.codeproject.com/Articles/194916/Enhancing-HTML-tables-using-a-JQuery-DataTables-pl - Very useful
+-> check 'footer_callback'
+
+
+
+2. https://www.sitepoint.com/working-jquery-datatables/
+
+

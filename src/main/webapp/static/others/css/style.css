@@ -1,0 +1,394 @@
+header {
+	border-bottom: 1px solid #00a3d9;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	height: 45px
+}
+
+#head_img {
+	height: 210px;
+}
+
+.form-ul {
+	list-style-type:none;
+	padding-left:0px;
+}
+
+.form-ul label {
+	float: left;
+}
+
+.daterange {
+	clear: both;	
+}
+
+.hdr-rht {
+	float: right;
+	width: 30%;
+	text-align: right;
+	line-height: 45px;
+	padding-right: 10px;
+}
+
+.hdr-lft {
+	float: left;
+	width: 70%;
+	padding-left: 30px;
+}
+
+.hdr-rht h4 {
+	color: #0e8acc;
+	font-family: "NoaLight", verdana, arial, sans-serif;
+}
+
+.hdr-lft img {
+	border-radius: 4px;
+}
+
+.hdr-lft-rda {
+	position: relative;
+	top: 17px;
+	left: -3px;
+}
+
+.hdr-lft-rda img {
+	border-radius: 0px;
+}
+
+.cont a {
+	color: #FFF !important;
+	text-decoration: none;
+}
+
+/* table styles*/
+
+.table-bordered td{   border-color: #ccc!important; padding:5px;}
+.table-bordered thead {color:#00a1de;font-size: 12px; font-weight: 700; color:#fff;}
+.table-bordered{width:100%; border-radius: 4px;}
+.table-bordered thead tr th {padding:5px;  border-collapse: collapse;text-align: center;}
+.table-bordered thead tr th a {
+	color: #FFF !important;
+	text-decoration: none;
+}
+
+.table > tbody + tbody {
+    border-bottom: 1px solid #ccc;
+    border-top: 2px solid #ddd;
+}
+
+.table-bordered>thead>tr>th:first-child 
+{
+    border-radius:4px 0 0 0px;
+    background: linear-gradient(to bottom, #00B6E6 0px, #00A1DE 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.table-bordered>thead>tr>th:last-child 
+{
+    border-radius:0px 4px 0px 0px;
+    background: linear-gradient(to bottom, #00B6E6 0px, #00A1DE 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  
+}
+
+.table-bordered>thead>tr>th
+{
+    background: linear-gradient(to bottom, #00B6E6 0px, #00A1DE 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    text-overflow: ellipsis; overflow: hidden;
+}
+
+.table-bordered>thead>tr>th>input
+{
+    color: #000000;
+}
+.table-bordered>tbody>tr>td>textarea {
+	width: 100%;
+}
+
+.table-bordered>tbody>tr>td {
+	padding : 0px;
+	vertical-align : middle;
+}
+
+.table-bordered>tbody>tr>td>a>p {
+	margin-bottom: 0px;
+}
+
+.table-bordered>tbody {
+	text-align: center;
+}
+
+.table-bordered>tbody:nth-child(odd) {
+background-color: #F0F0F0;
+}
+
+/* New CSS*/
+body {
+	font: 13px/1.6 Helvetica !important;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+/* @font-face {
+	font-family: 'NoaLight';
+	src:
+		url("https://www.klm.com//ams/frontend/2.17.7/font/NoaLTW02-Light.woff")
+		format("woff");
+}
+ */
+.hd {
+	border-bottom: 1px solid #ccecf8;
+	background-color: #009DE0;
+	height: 50px;
+	box-shadow: 0 0 5px #36A9E9 !important;
+	/* color: #fff; */
+}
+
+.hd img {
+	border-radius: 5px;;
+	box-shadow: 0 0 5px #009DE0;
+}
+
+.stellaF {
+	padding-left: 15px;
+	position: relative;
+	top: -15px;
+	color: #fff;
+	font-family: "NoaLight", verdana, arial, sans-serif;
+	font-size: 22px;
+	font-weight: 600;
+	letter-spacing: normal;
+}
+
+.hdLft {
+	float: left;
+	width: 50%
+}
+
+.hdRht {
+	float: right;
+	width: 50%;
+	text-align: right
+}
+
+.midLay {
+	color: #333;
+	clear: both;
+	padding-top: 50px;
+}
+
+.arrow {
+	color: #00a1de;
+	font-family: "NoaLight", verdana, arial, sans-serif;
+	font-size: 23px;
+	font-weight: normal;
+	line-height: 1.3;
+	padding-bottom: 10px;
+	display: block;
+	text-align:center;
+}
+
+.arrow_rt {
+	text-align: right;
+	float: right;
+	font: 13px/3.5 Helvetica !important;
+	color: #333;
+	font-weight: 600 !important;
+}
+/* Panel & Table Design Start Here */
+.panel-default {
+	border-color: #ccc !important;
+}
+
+.panel {
+    overflow: auto;
+	border-radius: 4px;
+	box-shadow: 0 0 5px #ccc !important;
+}
+
+.panel>.table-bordered>thead>tr:first-child>th {
+	border-top: 0 !important;
+	border-color: #ccc;
+}
+
+.panel-default>.panel-heading {
+	background: linear-gradient(to bottom, #00B6E6 0px, #00A1DE 100%) repeat
+		scroll 0 0 rgba(0, 0, 0, 0) !important;
+	font-family: "NoaLight", verdana, arial, sans-serif;
+	font-size: 18px;
+	color: #fff;
+}
+
+.btn-primary {
+	background: linear-gradient(to bottom, #00B6E6 0px, #00A1DE 100%) repeat
+		scroll 0 0 rgba(0, 0, 0, 0) !important;
+	border-color: #2e6da4;
+	color: #fff;
+}
+
+.btn-create-scenario {
+	margin-left : 600px;
+}
+/*bootstrap css modified*/
+.container {
+	width: 100%;
+	padding: 0px 50px;
+}
+
+.fst-button-save, .fst-button-cancel {
+	width: 75%;
+	font-size: 11px;
+    font-weight: 400;
+
+    margin-bottom: 3px;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.fst-btn-view {
+	
+	width: 100%;
+}
+
+.fst-flight-comments {
+	display : block;
+	width : 100%;
+}
+
+.highlightGreen {
+    color: #018601;
+}
+
+.highlightNormal {
+    font-weight: normal;
+
+}
+.highlightBold {
+    font-weight: bold;
+}
+
+.highlightRed {
+    color: #FC5656;
+}
+ 
+.fst-btn-finalize {
+	background-color : #fff;
+	width : 200px;
+	float : right;
+}
+
+.fst-btn-clear-filter {
+	width : 200px;
+	float : right;
+	background: linear-gradient(to bottom, #00b6e6 0px, #00a1de 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.fst-div-ctrl {
+	padding-bottom : 50px;
+}
+
+.table > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > tbody > tr > td, .table > tfoot > tr > td {
+  border-top: 1px solid #ddd;
+    line-height: 1.42857;
+    padding: 0px;
+}
+
+.form-control{
+	
+	height : 28px;
+	
+}
+
+.txtwidthalign{
+	margin-left: 34px;
+    padding: 6px 0;
+    text-align: center;
+    width: 32%;
+}
+
+.txt-cd-priority{
+	margin-left: 32%;
+    width: 38%;
+}
+
+.fst-display-comment {
+	width : 100%;
+}
+
+.glyphicon-comment {
+	font-size : 29px;
+}
+
+.glyphicon {
+	color : #46b8da;
+}
+
+.tooltip-inner {
+	font-family: Calibri;
+	font-size: 15px;
+	font-weight: bold;
+	color : #000;
+	background-color: #ccffff;
+}
+.nocomments {
+    color: grey;
+	}
+	
+.btn {
+	background: linear-gradient(to bottom, #00b6e6 0px, #00a1de 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);  
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.42857;
+    margin-bottom: 3px;
+    margin-top: 5px;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+	}
+	
+.clear {
+	clear: both;
+}
+
+.formerrormessage {
+	color: red;
+}
+
+.bottompadding {
+	margin-bottom: 20px;
+}
+
+.headerbottompadding {
+	margin-bottom: 50px;
+}
+
+.headertoppadding {
+	margin-top: 50px;
+}
+
+.indexthumb {
+	box-shadow: 0 0px 0px; 
+	border: 1px solid #fff;
+}
+
+.title-text {
+	color:#00a1de;
+}
+
+.label-inactive {
+	background-color: #86AAB8;
+}
+
+.label-active {
+	background-color: #33D533;
+}
+
+.white_color {
+	color: #fff;
+}
+
+mark {
+	color: #00a1de;
+	background: #fff;
+}

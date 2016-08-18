@@ -1,0 +1,16 @@
+{ "aaData": [
+	{
+		"item": "Trident",
+		"quantity": "Internet Explorer 4.0",
+		"pricePerUnit": "Win 95+",
+		"milestoneValue": "4",
+		"milestoneDesc": "X"
+	},
+	{
+		"item": "Other browsers",
+		"quantity": "All others",
+		"pricePerUnit": "-",
+		"milestoneValue": "-",
+		"milestoneDesc": "U"
+	}
+] }

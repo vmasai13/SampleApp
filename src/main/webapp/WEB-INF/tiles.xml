@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+<tiles-definitions> 
+	<definition name="base.definition"  
+        template="/WEB-INF/views/layout.jsp">  
+        <put-attribute name="title" value=""  type="string"/>  
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp" />  
+        <!-- <put-attribute name="navigationbar" value="/WEB-INF/views/navigationBar.jsp" />   -->
+        <put-attribute name="body" value="" />  
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />  
+    </definition> 
+    
+    <definition name="index" extends="base.definition">  
+        <put-attribute name="title" value="Welcome to Metrics"  type="string"/>  
+        <put-attribute name="body" value="/WEB-INF/views/jsp/index.jsp" />  
+    </definition>
+  
+     <definition name="billLog" extends="base.definition">  
+        <put-attribute name="title" value="Bill Log"  type="string"/>  
+        <put-attribute name="body" value="/WEB-INF/views/jsp/billLog.jsp" />  
+    </definition>
+    
+    <definition name="getPurchaseOrder" extends="base.definition">  
+        <put-attribute name="title" value="Process Purchase Order"  type="string"/>  
+        <put-attribute name="body" value="/WEB-INF/views/jsp/selectPurchaseOrder.jsp" />  
+    </definition>
+     <!--
+    <definition name="customizableChipNPinPaymentStatisticsReport" extends="base.definition">  
+        <put-attribute name="title" value="Chip N Pin Payment Statistics Report"  type="string"/>  
+        <put-attribute name="body" value="/WEB-INF/view/customizableChipNPinPaymentStatisticsReport.jsp" />  
+    </definition>    
+    
+    <definition name="ngkKioskSeriesConfiguration" extends="base.definition">  
+        <put-attribute name="title" value="Kiosk Series Configuration"  type="string"/>  
+        <put-attribute name="body" value="/WEB-INF/view/ngkKioskSeriesConfiguration.jsp" />  
+    </definition>
+    
+    <definition name="about" extends="base.definition">  
+        <put-attribute name="title" value="About Kiosk Metrics Application"  type="string"/>  
+        <put-attribute name="body" value="/WEB-INF/view/about.jsp" />  
+    </definition>
+    
+    <definition name="settings" extends="base.definition">  
+        <put-attribute name="title" value="Kiosk Metrics Application Settings"  type="string"/>  
+        <put-attribute name="body" value="/WEB-INF/view/settings.jsp" />  
+    </definition>
+    
+    <definition name="batchEvent" extends="base.definition">  
+        <put-attribute name="title" value="Batch Events"  type="string"/>  
+        <put-attribute name="body" value="/WEB-INF/view/batchEvent.jsp" />  
+    </definition>
+    
+    <definition name="webEvent" extends="base.definition">  
+        <put-attribute name="title" value="Web Events"  type="string"/>  
+        <put-attribute name="body" value="/WEB-INF/view/webEvent.jsp" />  
+    </definition>
+    
+    <definition name="error" extends="base.definition">  
+        <put-attribute name="title" value="Error"  type="string"/>  
+        <put-attribute name="body" value="/WEB-INF/view/error.jsp" />  
+    </definition> -->
+    
+</tiles-definitions>

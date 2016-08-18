@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+ 	<!-- <bean id="customizedNGKPaymentComparisonReportExcel"
+	   	class="com.klm.ngk.web.view.CustomizedNGKPaymentComparisonReportExcelView">
+	</bean>		
+	
+	<bean id="customizedNGKPaymentComparisonReportPDF"
+	   	class="com.klm.ngk.web.view.CustomizedNGKPaymentComparisonReportPDFView">
+	</bean>
+	
+	<bean id="customizedNGKChipNPinPaymentStatisticsReportExcel"
+	   	class="com.klm.ngk.web.view.CustomizedNGKChipNPinPaymentStatisticsReportExcelView">
+	</bean>
+	
+	<bean id="customizedNGKChipNPinPaymentStatisticsReportPDF"
+	   	class="com.klm.ngk.web.view.CustomizedNGKChipNPinPaymentStatisticsReportPDFView">
+	</bean> -->
+	
+</beans>
