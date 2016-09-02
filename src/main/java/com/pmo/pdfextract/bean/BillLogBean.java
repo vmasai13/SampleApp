@@ -8,14 +8,8 @@ import com.pmo.persistence.AbstractDatedDBRecord;
 
 @Document(collection = "billLog")
 public class BillLogBean extends AbstractDatedDBRecord {
-	private String wonNumber;
-	private String projectName;
-	private String milestoneDesc;
-	private String milestoneValue;
-	private String clientInvoiceDate;
-	private Date clientInvoiceDateinDate;
-	private String customerInvoiceNumber;
-	private String vat;
+	
+	/*private String vat;
 	private String attention;
 	private String reference;
 	private String comment = "";
@@ -25,74 +19,40 @@ public class BillLogBean extends AbstractDatedDBRecord {
 	private String bankAccount;
 	private String iBANNo;
 	private String swiftCode;
-	private String item;
-	private String quantity;
-	private String PONumber;
-	private String pricePerUnit;
 	private String empName;
 	private String empRole;
 	private String billingFrom;
 	private String billingTo;
 	private String units;
-	private String projectType;
-	private String invoiceType;
+	private String invoiceType;*/
 	
-	public BillLogBean(Date date, String wonNumber, String projectName, String milestoneDesc, String milestoneValue,
-			String clientInvoiceDate, Date clientInvoiceDateinDate, String customerInvoiceNumber, String vat,
-			String attention, String reference, String comment, String totalAmount, String totalAmountInWords,
-			String bankName, String bankAccount, String iBANNo, String swiftCode, String item, String quantity,
-			String pONumber, String pricePerUnit, String empName, String empRole, String billingFrom, String billingTo,
-			String units, String projectType, String invoiceType) {
-		super(date);
-		this.wonNumber = wonNumber;
-		this.projectName = projectName;
-		this.milestoneDesc = milestoneDesc;
-		this.milestoneValue = milestoneValue;
-		this.clientInvoiceDate = clientInvoiceDate;
-		this.clientInvoiceDateinDate = clientInvoiceDateinDate;
-		this.customerInvoiceNumber = customerInvoiceNumber;
-		this.vat = vat;
-		this.attention = attention;
-		this.reference = reference;
-		this.comment = comment;
-		this.totalAmount = totalAmount;
-		this.totalAmountInWords = totalAmountInWords;
-		this.bankName = bankName;
-		this.bankAccount = bankAccount;
-		this.iBANNo = iBANNo;
-		this.swiftCode = swiftCode;
-		this.item = item;
-		this.quantity = quantity;
-		this.PONumber = pONumber;
-		this.pricePerUnit = pricePerUnit;
-		this.empName = empName;
-		this.empRole = empRole;
-		this.billingFrom = billingFrom;
-		this.billingTo = billingTo;
-		this.units = units;
-		this.projectType = projectType;
-		this.invoiceType = invoiceType;
+	/*	Bean objects used for Bill log jtable */
+    private String billingMonth;
+    private String won;
+    private String projectType;
+	private String project;
+	private String description;
+	private String customerInvoiceNumber;
+    private String klmPm;
+    private String milestoneStatus;
+    private String invoiceStatus;
+    private String poNumber;
+    private String clientInvoiceDate;
+    private String item;
+    private String quantity;
+	private String pricePerUnit;
+	
+	public String getBillingMonth() {
+		return billingMonth;
 	}
-	public BillLogBean() {
-		// TODO Auto-generated constructor stub
+	public void setBillingMonth(String billingMonth) {
+		this.billingMonth = billingMonth;
 	}
-	public String getClientInvoiceDate() {
-		return clientInvoiceDate;
+	public String getWon() {
+		return won;
 	}
-	public void setClientInvoiceDate(String clientInvoiceDate) {
-		this.clientInvoiceDate = clientInvoiceDate;
-	}
-	public Date getClientInvoiceDateinDate() {
-		return clientInvoiceDateinDate;
-	}
-	public void setClientInvoiceDateinDate(Date clientInvoiceDateinDate) {
-		this.clientInvoiceDateinDate = clientInvoiceDateinDate;
-	}
-	public String getInvoiceType() {
-		return invoiceType;
-	}
-	public void setInvoiceType(String invoiceType) {
-		this.invoiceType = invoiceType;
+	public void setWon(String won) {
+		this.won = won;
 	}
 	public String getProjectType() {
 		return projectType;
@@ -100,47 +60,53 @@ public class BillLogBean extends AbstractDatedDBRecord {
 	public void setProjectType(String projectType) {
 		this.projectType = projectType;
 	}
-	public String getPricePerUnit() {
-		return pricePerUnit;
+	public String getProject() {
+		return project;
 	}
-	public String getEmpName() {
-		return empName;
+	public void setProject(String project) {
+		this.project = project;
 	}
-	public void setEmpName(String empName) {
-		this.empName = empName;
+	public String getDescription() {
+		return description;
 	}
-	public String getEmpRole() {
-		return empRole;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public void setEmpRole(String empRole) {
-		this.empRole = empRole;
+	public String getCustomerInvoiceNumber() {
+		return customerInvoiceNumber;
 	}
-	public String getBillingFrom() {
-		return billingFrom;
+	public void setCustomerInvoiceNumber(String customerInvoiceNumber) {
+		this.customerInvoiceNumber = customerInvoiceNumber;
 	}
-	public void setBillingFrom(String billingFrom) {
-		this.billingFrom = billingFrom;
+	public String getKlmPm() {
+		return klmPm;
 	}
-	public String getBillingTo() {
-		return billingTo;
+	public void setKlmPm(String klmPm) {
+		this.klmPm = klmPm;
 	}
-	public void setBillingTo(String billingTo) {
-		this.billingTo = billingTo;
+	public String getMilestoneStatus() {
+		return milestoneStatus;
 	}
-	public String getUnits() {
-		return units;
+	public void setMilestoneStatus(String milestoneStatus) {
+		this.milestoneStatus = milestoneStatus;
 	}
-	public void setUnits(String units) {
-		this.units = units;
+	public String getInvoiceStatus() {
+		return invoiceStatus;
 	}
-	public void setPricePerUnit(String pricePerUnit) {
-		this.pricePerUnit = pricePerUnit;
+	public void setInvoiceStatus(String invoiceStatus) {
+		this.invoiceStatus = invoiceStatus;
 	}
-	public String getPONumber() {
-		return PONumber;
+	public String getPoNumber() {
+		return poNumber;
 	}
-	public void setPONumber(String PONumber) {
-		this.PONumber = PONumber;
+	public void setPoNumber(String poNumber) {
+		this.poNumber = poNumber;
+	}
+	public String getClientInvoiceDate() {
+		return clientInvoiceDate;
+	}
+	public void setClientInvoiceDate(String clientInvoiceDate) {
+		this.clientInvoiceDate = clientInvoiceDate;
 	}
 	public String getItem() {
 		return item;
@@ -154,83 +120,11 @@ public class BillLogBean extends AbstractDatedDBRecord {
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
-	public String getComment() {
-		return comment;
+	public String getPricePerUnit() {
+		return pricePerUnit;
 	}
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-	public String getVat() {
-		return vat;
-	}
-	public void setVat(String vat) {
-		this.vat = vat;
-	}
-	public String getAttention() {
-		return attention;
-	}
-	public void setAttention(String attention) {
-		this.attention = attention;
-	}
-	public String getReference() {
-		return reference;
-	}
-	public void setReference(String reference) {
-		this.reference = reference;
-	}
-	public String getTotalAmount() {
-		return totalAmount;
-	}
-	public void setTotalAmount(String totalAmount) {
-		this.totalAmount = totalAmount;
-	}
-	public String getTotalAmountInWords() {
-		return totalAmountInWords;
-	}
-	public void setTotalAmountInWords(String totalAmountInWords) {
-		this.totalAmountInWords = totalAmountInWords;
-	}
-	public String getBankName() {
-		return bankName;
-	}
-	public void setBankName(String bankName) {
-		this.bankName = bankName;
-	}
-	public String getBankAccount() {
-		return bankAccount;
-	}
-	public void setBankAccount(String bankAccount) {
-		this.bankAccount = bankAccount;
-	}
-	public String getiBANNo() {
-		return iBANNo;
-	}
-	public void setiBANNo(String iBANNo) {
-		this.iBANNo = iBANNo;
-	}
-	public String getSwiftCode() {
-		return swiftCode;
-	}
-	public void setSwiftCode(String swiftCode) {
-		this.swiftCode = swiftCode;
-	}
-	public String getWonNumber() {
-		return wonNumber;
-	}
-	public void setWonNumber(String wonNumber) {
-		this.wonNumber = wonNumber;
-	}
-	public String getProjectName() {
-		return projectName;
-	}
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
-	}
-	public String getMilestoneDesc() {
-		return milestoneDesc;
-	}
-	public void setMilestoneDesc(String milestoneDesc) {
-		this.milestoneDesc = milestoneDesc;
+	public void setPricePerUnit(String pricePerUnit) {
+		this.pricePerUnit = pricePerUnit;
 	}
 	public String getMilestoneValue() {
 		return milestoneValue;
@@ -238,16 +132,79 @@ public class BillLogBean extends AbstractDatedDBRecord {
 	public void setMilestoneValue(String milestoneValue) {
 		this.milestoneValue = milestoneValue;
 	}
-	/*public Date getClientInvoiceDate() {
-		return clientInvoiceDate;
+	public String getMilestoneValuewithVAT() {
+		return milestoneValuewithVAT;
 	}
-	public void setClientInvoiceDate(Date clientInvoiceDate) {
-		this.clientInvoiceDate = clientInvoiceDate;
-	}*/
-	public String getCustomerInvoiceNumber() {
-		return customerInvoiceNumber;
+	public void setMilestoneValuewithVAT(String milestoneValuewithVAT) {
+		this.milestoneValuewithVAT = milestoneValuewithVAT;
 	}
-	public void setCustomerInvoiceNumber(String customerInvoiceNumber) {
+	public String getMilestoneDesc() {
+		return milestoneDesc;
+	}
+	public void setMilestoneDesc(String milestoneDesc) {
+		this.milestoneDesc = milestoneDesc;
+	}
+	public String getTcsInvoiceMapping1() {
+		return tcsInvoiceMapping1;
+	}
+	public void setTcsInvoiceMapping1(String tcsInvoiceMapping1) {
+		this.tcsInvoiceMapping1 = tcsInvoiceMapping1;
+	}
+	public String getTcsInvoiceMapping2() {
+		return tcsInvoiceMapping2;
+	}
+	public void setTcsInvoiceMapping2(String tcsInvoiceMapping2) {
+		this.tcsInvoiceMapping2 = tcsInvoiceMapping2;
+	}
+	public String getTcsInvoiceMapping3() {
+		return tcsInvoiceMapping3;
+	}
+	public void setTcsInvoiceMapping3(String tcsInvoiceMapping3) {
+		this.tcsInvoiceMapping3 = tcsInvoiceMapping3;
+	}
+	public String getRemarks() {
+		return remarks;
+	}
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+	private String milestoneValue;
+	private String milestoneValuewithVAT;
+	private String milestoneDesc;
+	private String tcsInvoiceMapping1;
+	private String tcsInvoiceMapping2;
+	private String tcsInvoiceMapping3;
+	private String remarks;
+
+	public BillLogBean(Date date,String billingMonth, String won, String projectType, String project, String description,
+			String customerInvoiceNumber, String klmPm, String milestoneStatus, String invoiceStatus, String poNumber,
+			String clientInvoiceDate, String item, String quantity, String pricePerUnit, String milestoneValue,
+			String milestoneValuewithVAT, String milestoneDesc, String tcsInvoiceMapping1, String tcsInvoiceMapping2,
+			String tcsInvoiceMapping3, String remarks) {
+		super(date);
+		this.billingMonth = billingMonth;
+		this.won = won;
+		this.projectType = projectType;
+		this.project = project;
+		this.description = description;
 		this.customerInvoiceNumber = customerInvoiceNumber;
+		this.klmPm = klmPm;
+		this.milestoneStatus = milestoneStatus;
+		this.invoiceStatus = invoiceStatus;
+		this.poNumber = poNumber;
+		this.clientInvoiceDate = clientInvoiceDate;
+		this.item = item;
+		this.quantity = quantity;
+		this.pricePerUnit = pricePerUnit;
+		this.milestoneValue = milestoneValue;
+		this.milestoneValuewithVAT = milestoneValuewithVAT;
+		this.milestoneDesc = milestoneDesc;
+		this.tcsInvoiceMapping1 = tcsInvoiceMapping1;
+		this.tcsInvoiceMapping2 = tcsInvoiceMapping2;
+		this.tcsInvoiceMapping3 = tcsInvoiceMapping3;
+		this.remarks = remarks;
+	}
+	public BillLogBean() {
+		// TODO Auto-generated constructor stub
 	}
 }	

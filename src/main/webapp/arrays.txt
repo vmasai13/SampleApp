@@ -1,16 +1,18 @@
 { "aaData": [
 	{
-		"item": "Trident",
-		"quantity": "Internet Explorer 4.0",
-		"pricePerUnit": "Win 95+",
+		"milestoneDes":"Support and Development Cargoshop - Onsite",
+		"id": "Trident",
+		"date": "Internet Explorer 4.0",
+		"wonNumber": "Win 95+",
 		"milestoneValue": "4",
-		"milestoneDesc": "X"
+		"milestoneValue": "X"
 	},
 	{
-		"item": "Other browsers",
-		"quantity": "All others",
-		"pricePerUnit": "-",
+		"milestoneDes":"Support and Development Cargoshop - Onsite",
+		"id": "Other browsers",
+		"date": "All others",
+		"wonNumber": "-",
 		"milestoneValue": "-",
-		"milestoneDesc": "U"
+		"milestoneValue": "U"
 	}
 ] }

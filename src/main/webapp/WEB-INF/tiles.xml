@@ -14,16 +14,28 @@
         <put-attribute name="title" value="Welcome to Metrics"  type="string"/>  
         <put-attribute name="body" value="/WEB-INF/views/jsp/index.jsp" />  
     </definition>
-  
-     <definition name="billLog" extends="base.definition">  
+    <!-- View only for Viewing and filtering -->
+    <definition name="billLogView" extends="base.definition">  
         <put-attribute name="title" value="Bill Log"  type="string"/>  
-        <put-attribute name="body" value="/WEB-INF/views/jsp/billLog.jsp" />  
+        <put-attribute name="body" value="/WEB-INF/views/jsp/billLogView.jsp" />  
+    </definition>
+  <!-- View only for Editing and updating -->
+    <definition name="billLogEdit" extends="base.definition">  
+        <put-attribute name="title" value="Bill Log"  type="string"/>  
+        <put-attribute name="body" value="/WEB-INF/views/jsp/billLogEdit.jsp" />
+       <!--  <put-attribute name="body" value="/WEB-INF/views/jsp/billLog.jsp" />   -->
     </definition>
     
     <definition name="getPurchaseOrder" extends="base.definition">  
         <put-attribute name="title" value="Process Purchase Order"  type="string"/>  
         <put-attribute name="body" value="/WEB-INF/views/jsp/selectPurchaseOrder.jsp" />  
     </definition>
+    
+    <definition name="billlogtable" extends="base.definition">  
+        <put-attribute name="title" value="Bill Log"  type="string"/>  
+        <put-attribute name="body" value="/WEB-INF/views/jsp/billlogtable.jsp" />  
+    </definition>
+    
      <!--
     <definition name="customizableChipNPinPaymentStatisticsReport" extends="base.definition">  
         <put-attribute name="title" value="Chip N Pin Payment Statistics Report"  type="string"/>  

@@ -32,8 +32,8 @@ public abstract class AbstractDatedDBRecord extends AbstractDBRecord {
         super();
         this.date = date;
     }
-
-    /**
+    
+	/**
      * Gets the date of creation of this log record.
      * 
      * @return the date
@@ -50,5 +50,4 @@ public abstract class AbstractDatedDBRecord extends AbstractDBRecord {
     public void setDate(Date date) {
         this.date = date;
     }
-
 }

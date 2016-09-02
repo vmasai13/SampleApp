@@ -19,16 +19,30 @@
 				<div>
 					<div class="row">
 						<div class="col-md-6">
-							<a href="billLog">
+							<a href="billLogView">
 							    <div class="thumbnail indexthumb">
 									<img src="../static/img/report-writing.jpg" alt="" style="min-height:160px;height:160px;min-width:286px;width:386px;">
 									<div class="caption" align="center">
 										<h4 class="title-text">Bill logs</h4>
-										<p><h5 class="title-text">See the details of bill logs.</h5></p>
+										<p><h5 class="title-text">Only for VIEWING and FILTERING</h5></p>
 									</div>
 								</div>
 							</a>								
 						</div>
+						<div class="col-md-6">
+							<a href="billLogEdit">
+							    <div class="thumbnail indexthumb">
+									<img src="../static/img/report-writing.jpg" alt="" style="min-height:160px;height:160px;min-width:286px;width:386px;">
+									<div class="caption" align="center">
+										<h4 class="title-text">Bill logs</h4>
+										<p><h5 class="title-text">Only for EDITING and UPDATING</h5></p>
+									</div>
+								</div>
+							</a>								
+						</div>
+					</div>
+					<div class="headerbottompadding"></div>
+					<div class="row">
 						<div class="col-md-6">
 							<a href="selectPurchaseOrder">
 								<div class="thumbnail indexthumb">
@@ -40,9 +54,6 @@
 								</div>
 							</a>								
 						</div>
-					</div>
-					<div class="headerbottompadding"></div>
-					<div class="row">
 						<!-- <div class="col-md-4">
 							<a href="kioskSeriesConfiguration">
 							    <div class="thumbnail indexthumb">

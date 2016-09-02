@@ -1,6 +1,8 @@
 package com.pmo.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +39,18 @@ public class PMOController {
 		return "billLog";
 	}
 	
+	@RequestMapping(value="/billLogEdit", method=RequestMethod.GET)
+	public String getBillLogEditable(ModelMap model) {
+		model.addAttribute("message", "Spring 3 MVC Hello World");
+		return "billLogEdit";
+	}
+	
+	
+	@RequestMapping(value="/billLogView", method=RequestMethod.GET)
+	public String billlogView(ModelMap model) {
+		return "billLogView";
+	}
+	
 	/**
 	 * To process the purchase order's and save it in mongo DB
 	 * @param model
@@ -46,17 +60,18 @@ public class PMOController {
 	public String getData(ModelMap model) {
 		List<BillLogBean> mileStoneList = pdfExtract.processPurchaseOrder();
 		for(BillLogBean mileStone : mileStoneList) {
-			//billLogPersistenceService.insert(mileStone);
+			billLogPersistenceService.insert(mileStone);
 		}
 		return "getPurchaseOrder";
 	}
 	
 	@RequestMapping(value="/getBillLogData", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody List<BillLogBean> getBillLogData() {
-		BillLogBean billLogBean = new BillLogBean();
+	public @ResponseBody Map<String, Object> getBillLogData() {
+		Map<String, Object> settingsMap = new HashMap<String, Object>();
 		List<BillLogBean> output = billLogPersistenceService.findAll();
 		System.out.println("Fetched from Database...");
-		return output;
+		settingsMap.put("aaData", output);
+		return settingsMap;
 	}
 /*	@RequestMapping(value = "/hello/{name:.+}", method = RequestMethod.GET)
 	public ModelAndView hello(@PathVariable("name") String name) {

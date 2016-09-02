@@ -8,3 +8,8 @@ Database tables:
 2. https://www.sitepoint.com/working-jquery-datatables/
 
 
+##### Things to do #####
+=========================
+1. Pagination in the Jtable
+2. How to insert a Create Button in the Jtable.
+3. 

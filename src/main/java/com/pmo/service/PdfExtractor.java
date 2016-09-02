@@ -3,6 +3,7 @@ package com.pmo.service;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -102,14 +103,13 @@ public class PdfExtractor {
 				if(/*StringUtils.countOccurrencesOf(str, "EUR") == 2 && */str.endsWith("EUR") && !str.startsWith("TOTAL")) {
 					// Re-initializing the invoice bean for next milestone
 					invoiceBean = new BillLogBean();
+					invoiceBean.setBillingMonth(new SimpleDateFormat("MMM-yy").format(new Date()));
 					str = str.replaceAll("\\s+", " ");
 					// [1, 12.12.2014, 23,00, EUR, 80,0, HR, 1.840,00, EUR]
 					String lineSplit[] = str.split(" ");
 					invoiceBean.setItem(lineSplit[0]);
-					String invoiceDate = lineSplit[1];
-					SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
-					Date date = formatter.parse(invoiceDate);
-					invoiceBean.setClientInvoiceDateinDate(date);
+					String invoiceDate = dateConversion(lineSplit[1]);
+					invoiceBean.setClientInvoiceDate(invoiceDate);
 					String prizePerUnit = lineSplit[2].split(",")[0];
 					prizePerUnit = prizePerUnit.replace('.', ',');
 					invoiceBean.setPricePerUnit(prizePerUnit);
@@ -124,10 +124,10 @@ public class PdfExtractor {
 					String mileStoneValue = lineSplit[6].split(",")[0];
 					mileStoneValue = mileStoneValue.replace('.', ',');
 					invoiceBean.setMilestoneValue(mileStoneValue);
-					invoiceBean.setPONumber(poNumber);
+					invoiceBean.setPoNumber(poNumber);
 				} else if(str.startsWith("Notes :")) {
 					String lineSplit[] = str.split("Notes :");
-					invoiceBean.setMilestoneDesc(lineSplit[1].trim());
+					invoiceBean.setDescription(lineSplit[1].trim());
 					mileStonesPerPO.add(invoiceBean);
 				}/* else if(StringUtils.countOccurrencesOf(str, "EUR") == 1 && str.endsWith("EUR") && !str.startsWith("TOTAL")) {
 					System.out.println(str);
@@ -137,5 +137,19 @@ public class PdfExtractor {
 		}
 		doc.close();
 		return mileStonesPerPO;
+	}
+	
+	/**
+	 * Conversion of date format from the PO document to bill log.
+	 * EG: Conversion from "17.06.2016" to "17-Jun-16".
+	 * @param rawdate
+	 * @return {@link String}
+	 * @throws ParseException 
+	 */
+	private String dateConversion(String rawdate) throws ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+		Date date = (Date) formatter.parse(rawdate);
+		DateFormat destDf = new SimpleDateFormat("dd-MMM-yy");
+		return destDf.format(date);	
 	}
 }
