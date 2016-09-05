@@ -37,7 +37,7 @@
             sorting: true,
             paging: true,
             pageSize: 10,
-            defaultSorting: 'PO ASC',
+            defaultSorting: 'projectType',
             actions: {
                 listAction: '../app/billlogtableentry',
                 deleteAction: '../app/billlogtableentry/delete',
@@ -52,7 +52,7 @@
                     list: false
                 },
                 billingMonth: {
-                    title: 'Bill Month',
+                    title: 'BillMonth',
                     width: '5%',
                     sorting: true
                 },
@@ -61,29 +61,27 @@
                     sorting: false,
                 },
                 projectType: {
-                	title: 'Type',
-                	sorting: true
+                	title: 'Type'
                 },
                 project: {
                 	title: 'Project',
                 	sorting: true
                 },
                 customerInvoiceNumber: {
-                	title: 'KLM Inv Num',
-                	sorting: true
+                	title: 'KLMInvNum',
                 },
                 klmPm: {
-                	title: 'KLM PM',
+                	title: 'KLMPM',
                 	sorting: true
                 },
                 milestoneStatus: {
-                	title: 'Milestone Stat',
-                	options: { 'a': '-select-', 'b': 'Submitted', 'c': 'Approved', 'd':'Clarity required'},
+                	title: 'MilestoneStat',
+                	options: { '1': '-select-', '2': 'Submitted', '3': 'Approved', '4':'Clarity required'},
                 	sorting: true
                 },
                 invoiceStatus: {
-                	title: 'Invoice Stat',
-                	options: {'a': '-select-', 'b': 'Create', 'c': 'Submitted', 'd':'Paid'},
+                	title: 'InvoiceStat',
+                	options: {'1': '-select-', '2': 'Create', '3': 'Submitted', '4':'Paid'},
                 	sorting: true
                 },
                 poNumber: {
@@ -91,11 +89,11 @@
                 	sorting: true
                 },
                 clientInvoiceDate: {
-                	title: 'Milestone date',
+                	title: 'Date',
                 	sorting: true
                 },
                 item: {
-                	title: 'Item.no',
+                	title: 'Itemno',
                 	sorting: true
                 },
                 quantity: {
@@ -103,19 +101,19 @@
                 	sorting: true
                 },
                 pricePerUnit: {
-                	title: 'Price per unit',
+                	title: 'PPU',
                 	sorting: true
                 },
                 milestoneValue: {
-                	title: 'Amount',
+                	title: 'Amt',
                 	sorting: true
                 },
                 milestoneValuewithVAT: {
-                	title: 'Amount With VAT',
+                	title: 'AmtWithVAT',
                 	sorting: true
                 },
                 description: {
-                    title: 'MilestoneDesc',
+                    title: 'Description',
                     width: '18%',
                     sorting: false
                 },
@@ -136,7 +134,7 @@
                 },
                 remarks: {
                     title: 'Remarks',
-                    sorting: false
+                    sorting: true
                 }/* ,
                 userName: {
                 	title: 'Username',
