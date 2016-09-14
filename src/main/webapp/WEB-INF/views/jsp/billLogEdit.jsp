@@ -12,17 +12,13 @@
 
 <!-- Bootstrap core CSS -->
 <link href="../static/bootstrap/css/bootstrap.css" rel="stylesheet">
-<link href="../static/bootstrap/css/docs.css" rel="stylesheet">
 
 <!-- Bootstrap javaScript -->
-<script src="../static/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+<script src="../static/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
 
 <!-- JTable -->
 <link href="../static/jtable/themes/lightcolor/gray/jtable.css" rel="stylesheet" type="text/css" />
 <script src="../static/jtable/jquery.jtable.min.js" type="text/javascript"></script>
-
-<!-- Custom styles for this template -->
-<link href="../static/css/fancylog.css" rel="stylesheet">
 
 <style type="text/css" id="holderjs-style"></style>
 
@@ -37,7 +33,61 @@
             sorting: true,
             paging: true,
             pageSize: 10,
+            selecting: true, // For selecting feature
+            multiselect : true, // For multi-select
+            selectingCheckboxes: true, // For showing check-box for selection
+            selectOnRowClick: true,
+            jqueryuiTheme: true, // For the theme effect
             defaultSorting: 'projectType',
+            toolbar: {
+                items: [/* {
+                    icon: '/images/excel.png',
+                    text: 'Export to Excel',
+                    click: function () {
+                        //perform your custom job...
+                    }
+                }, */{
+                    icon: '../static/others/img/pdf.png',
+                    text: 'Create',
+                    tooltip: 'Create Invoice',
+                    click: function () {
+                    	var $selectedRows = $('#BillLogContainer').jtable('selectedRows');
+                        $('#actionStatus').empty();
+                        var selectedIDs = '';
+                        var record;
+                        if ($selectedRows.length > 0) {
+                            //Show selected rows
+                            $selectedRows.each(function () {
+                            	// debugger;
+                                record = $(this).data('record');
+                                if (selectedIDs) {
+                                	selectedIDs = selectedIDs + "," + record.id;
+                                } else {
+                                	selectedIDs = record.id;
+                                }
+                                $('#actionStatus').append(
+                                    '<b>Id: </b>: ' + record.id +
+                                    '<br /><b>PO number: </b>:' + record.poNumber + '<br /><br />'
+                                    );
+                            });
+                        } else {
+                            //No rows selected
+                            $('#actionsInfo').append('No row selected! Select rows to see here...');
+                        }
+                        
+                    	$.ajax({
+                    		url: "../app/billlogtableentry/createInvoice",
+                    		data:{ selectedIDs : selectedIDs},
+                    		error: function() {
+                    			alert('failure');
+                    		},
+                    		success: function() {
+                    			alert('success');
+                    		}                    		
+                    	})
+                    }
+                }]
+            },
             actions: {
                 listAction: '../app/billlogtableentry',
                 deleteAction: '../app/billlogtableentry/delete',
@@ -76,12 +126,12 @@
                 },
                 milestoneStatus: {
                 	title: 'MilestoneStat',
-                	options: { '1': '-select-', '2': 'Submitted', '3': 'Approved', '4':'Clarity required'},
+                	options: { '': '', 'Submitted': 'Submitted', 'Approved': 'Approved', 'Clarity required':'Clarity required'},
                 	sorting: true
                 },
                 invoiceStatus: {
                 	title: 'InvoiceStat',
-                	options: {'1': '-select-', '2': 'Create', '3': 'Submitted', '4':'Paid'},
+                	options: {'': '', 'Create': 'Create', 'Submitted': 'Submitted', 'Paid':'Paid'},
                 	sorting: true
                 },
                 poNumber: {
@@ -135,7 +185,7 @@
                 remarks: {
                     title: 'Remarks',
                     sorting: true
-                }/* ,
+                } /* ,
                 userName: {
                 	title: 'Username',
                 	sorting: false,
@@ -146,7 +196,26 @@
                 	sorting: false,
                 	visibility:'hidden'
                 } */
-             }
+             }/* ,
+           	 //Register to selectionChanged event to hanlde events
+             selectionChanged: function () {
+                 //Get all selected rows
+                 var $selectedRows = $('#BillLogContainer').jtable('selectedRows');
+                 $('#actionStatus').empty();
+                 if ($selectedRows.length > 0) {
+                     //Show selected rows
+                     $selectedRows.each(function () {
+                         var record = $(this).data('record');
+                         $('#actionStatus').append(
+                             '<b>StudentId</b>: ' + record.billingMonth +
+                             '<br /><b>Name</b>:' + record.billingMonth + '<br /><br />'
+                             );
+                     });
+                 } else {
+                     //No rows selected
+                     $('#SelectedRowList').append('No row selected! Select rows to see here...');
+                 }
+             }, */
         });
  
         //Load all records when page is first shown
@@ -156,6 +225,8 @@
 </script>
 </head>
 <body>
+
+<div id="actionStatus"></div>
 
 <div class="bs-example">
 	<div id="BillLogContainer"></div>

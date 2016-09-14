@@ -23,17 +23,17 @@ public class BillLogController {
 	@Autowired
 	BillLogService billLogService;
 	
-	@RequestMapping(value = "/get")
+    @RequestMapping(value = "/save")
     @ResponseBody
-    public Map<String, Object> listGet() {
+    public Map<String, Object> update(@ModelAttribute
+    		BillLogBean setting) {
         Map<String, Object> billLogMap = new HashMap<String, Object>();
-        List<BillLogBean> billLogList = new ArrayList<BillLogBean>();
-        billLogList.addAll(billLogService.listGet());
-        billLogMap.put("Records", billLogList);
+        billLogMap.put("Record", billLogService.save(setting));
+        System.out.println("Saved one item - " + setting.getPoNumber() + "|" + setting.getItem() + "|" + setting.getQuantity() + " to database");
         billLogMap.put("Result", "OK");
         return billLogMap;
     }
-	
+    
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> list(int jtStartIndex, int jtPageSize, String jtSorting) {
@@ -62,19 +62,35 @@ public class BillLogController {
     public Map<String, Object> create(BillLogBean setting) {
         Map<String, Object> billLogMap = new HashMap<String, Object>();
         billLogMap.put("Record", billLogService.save(setting));
-        System.out.println(setting.getPoNumber() + "|" + setting.getItem() + "|" + setting.getQuantity() + "1 New item saved in database");
+        System.out.println("New -> "+ setting.getPoNumber() + "|" + setting.getItem() + "|" + setting.getQuantity() + "1 New item saved in database");
+        billLogMap.put("Result", "OK");
+        return billLogMap;
+    }
+    
+    @RequestMapping(value = "/createInvoice", method= RequestMethod.GET ) 
+    @ResponseBody
+    public Map<String, Object> createInvoice(@RequestParam String selectedIDs) {
+        Map<String, Object> billLogMap = new HashMap<String, Object>();
+        String selectedId[] = selectedIDs.split(",");
+        for (String id : selectedId) {
+        	List<BillLogBean> billLogList = billLogService.checkId(id);
+        	// to implement calling the Create Invoice function.
+        }
+//        billLogMap.put("Record", billLogService.save(setting));
+//        System.out.println("Create invoice -> "+ setting.getPoNumber() + "|" + setting.getItem() + "|" + setting.getQuantity() + "1 New item saved in database");
+        billLogMap.put("Result", "OK");
+        return billLogMap;
+    }
+    
+    @RequestMapping(value = "/get")
+    @ResponseBody
+    public Map<String, Object> listGet() {
+        Map<String, Object> billLogMap = new HashMap<String, Object>();
+        List<BillLogBean> billLogList = new ArrayList<BillLogBean>();
+        billLogList.addAll(billLogService.listGet());
+        billLogMap.put("Records", billLogList);
         billLogMap.put("Result", "OK");
         return billLogMap;
     }
 
-    @RequestMapping(value = "/save")
-    @ResponseBody
-    public Map<String, Object> update(@ModelAttribute
-    		BillLogBean setting) {
-        Map<String, Object> billLogMap = new HashMap<String, Object>();
-        billLogMap.put("Record", billLogService.save(setting));
-        System.out.println("Saved one item - " + setting.getPoNumber() + "|" + setting.getItem() + "|" + setting.getQuantity() + " to database");
-        billLogMap.put("Result", "OK");
-        return billLogMap;
-    }
 }
