@@ -19,6 +19,9 @@
 <!-- JTable -->
 <link href="../static/jtable/themes/lightcolor/gray/jtable.css" rel="stylesheet" type="text/css" />
 <script src="../static/jtable/jquery.jtable.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../static/jtable/extensions/jquery.jtable.editinline.js"></script>
+<script type="text/javascript" src="../static/jtable/extensions/jquery.jtable.toolbarsearch.js"></script>
+
 
 <style type="text/css" id="holderjs-style"></style>
 
@@ -36,9 +39,11 @@
             selecting: true, // For selecting feature
             multiselect : true, // For multi-select
             selectingCheckboxes: true, // For showing check-box for selection
-            selectOnRowClick: true,
+            //selectOnRowClick: true,
             jqueryuiTheme: true, // For the theme effect
             defaultSorting: 'projectType',
+            editinline:{enable:true},
+            toolbarsearch:true,
             toolbar: {
                 items: [/* {
                     icon: '/images/excel.png',
@@ -167,6 +172,11 @@
                     width: '18%',
                     sorting: false
                 },
+                remarks: {
+                    title: 'Remarks',
+                    sorting: true,
+                    type:'textarea'
+                },
                 tcsInvoiceMapping1: {
                     title: 'TCS Inv Map1',
                     sorting: false,
@@ -181,11 +191,8 @@
                     title: 'TCS Inv Map3',
                     sorting: false,
                     visibility:'hidden'
-                },
-                remarks: {
-                    title: 'Remarks',
-                    sorting: true
-                } /* ,
+                }
+                 /* ,
                 userName: {
                 	title: 'Username',
                 	sorting: false,

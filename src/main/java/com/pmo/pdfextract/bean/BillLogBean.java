@@ -138,12 +138,6 @@ public class BillLogBean extends AbstractDatedDBRecord {
 	public void setMilestoneValuewithVAT(String milestoneValuewithVAT) {
 		this.milestoneValuewithVAT = milestoneValuewithVAT;
 	}
-	public String getMilestoneDesc() {
-		return milestoneDesc;
-	}
-	public void setMilestoneDesc(String milestoneDesc) {
-		this.milestoneDesc = milestoneDesc;
-	}
 	public String getTcsInvoiceMapping1() {
 		return tcsInvoiceMapping1;
 	}
@@ -170,7 +164,6 @@ public class BillLogBean extends AbstractDatedDBRecord {
 	}
 	private String milestoneValue;
 	private String milestoneValuewithVAT;
-	private String milestoneDesc;
 	private String tcsInvoiceMapping1;
 	private String tcsInvoiceMapping2;
 	private String tcsInvoiceMapping3;
@@ -179,7 +172,7 @@ public class BillLogBean extends AbstractDatedDBRecord {
 	public BillLogBean(Date date,String billingMonth, String won, String projectType, String project, String description,
 			String customerInvoiceNumber, String klmPm, String milestoneStatus, String invoiceStatus, String poNumber,
 			String clientInvoiceDate, String item, String quantity, String pricePerUnit, String milestoneValue,
-			String milestoneValuewithVAT, String milestoneDesc, String tcsInvoiceMapping1, String tcsInvoiceMapping2,
+			String milestoneValuewithVAT, String tcsInvoiceMapping1, String tcsInvoiceMapping2,
 			String tcsInvoiceMapping3, String remarks) {
 		super(date);
 		this.billingMonth = billingMonth;
@@ -198,7 +191,6 @@ public class BillLogBean extends AbstractDatedDBRecord {
 		this.pricePerUnit = pricePerUnit;
 		this.milestoneValue = milestoneValue;
 		this.milestoneValuewithVAT = milestoneValuewithVAT;
-		this.milestoneDesc = milestoneDesc;
 		this.tcsInvoiceMapping1 = tcsInvoiceMapping1;
 		this.tcsInvoiceMapping2 = tcsInvoiceMapping2;
 		this.tcsInvoiceMapping3 = tcsInvoiceMapping3;
