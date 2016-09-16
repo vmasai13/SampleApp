@@ -10,9 +10,9 @@ Database tables:
 
 ##### Things to do #####
 =========================
-1. Pagination & Sorting in the Jtable - Done
-2. How to insert a Create Button in the Jtable - In progress
-3. Export functions of all types at datatables - https://datatables.net/extensions/tabletools/
-4. DataTable: Drop down values are not getting displayed properly - Done
-5. JTable: In-line edit function in - Check this - https://github.com/hikalkan/jtable/issues/302
-6.  
+1. {DONE}	Pagination & Sorting in the Jtable
+2. {PROGRESS}How to insert a Create Button in the Jtable - IN PROGRESS
+3. Export functions of all types at datatables - https://datatables.net/extensions/tabletools/, https://github.com/hikalkan/jtable/issues/1475
+4. {DONE}	DataTable: Drop down values are not getting displayed properly - DONE
+5. {DONE}	JTable: In-line edit function in - Check this - https://github.com/hikalkan/jtable/issues/302
+6. {ON HOLD}JTable: Custom column filtering - https://github.com/hikalkan/jtable/issues/302  

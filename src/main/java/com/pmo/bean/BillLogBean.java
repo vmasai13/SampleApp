@@ -1,4 +1,4 @@
-package com.pmo.pdfextract.bean;
+package com.pmo.bean;
 
 import java.util.Date;
 
@@ -26,6 +26,10 @@ public class BillLogBean extends AbstractDatedDBRecord {
 	private String units;
 	private String invoiceType;*/
 	
+	/*	Other objects */
+	private String invoiceType;
+	
+	
 	/*	Bean objects used for Bill log jtable */
     private String billingMonth;
     private String won;
@@ -41,6 +45,12 @@ public class BillLogBean extends AbstractDatedDBRecord {
     private String item;
     private String quantity;
 	private String pricePerUnit;
+	private String milestoneValue;
+	private String milestoneValuewithVAT;
+	private String tcsInvoiceMapping1;
+	private String tcsInvoiceMapping2;
+	private String tcsInvoiceMapping3;
+	private String remarks;
 	
 	public String getBillingMonth() {
 		return billingMonth;
@@ -162,13 +172,14 @@ public class BillLogBean extends AbstractDatedDBRecord {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	private String milestoneValue;
-	private String milestoneValuewithVAT;
-	private String tcsInvoiceMapping1;
-	private String tcsInvoiceMapping2;
-	private String tcsInvoiceMapping3;
-	private String remarks;
-
+	public String getInvoiceType() {
+		return invoiceType;
+	}
+	public void setInvoiceType(String invoiceType) {
+		this.invoiceType = invoiceType;
+	}
+	
+	
 	public BillLogBean(Date date,String billingMonth, String won, String projectType, String project, String description,
 			String customerInvoiceNumber, String klmPm, String milestoneStatus, String invoiceStatus, String poNumber,
 			String clientInvoiceDate, String item, String quantity, String pricePerUnit, String milestoneValue,

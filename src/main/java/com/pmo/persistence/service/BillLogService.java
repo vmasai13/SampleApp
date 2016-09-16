@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
-import com.pmo.pdfextract.bean.BillLogBean;
+import com.pmo.bean.BillLogBean;
 
 @Component
 public class BillLogService {

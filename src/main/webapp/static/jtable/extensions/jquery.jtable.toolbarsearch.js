@@ -37,15 +37,16 @@
             	$headerCell.appendTo($tr);
             }
 			if(this.options.toolbarreset){
-			$reset = $('<th></th>')
-                .addClass('jtable-toolbarsearch-reset')
-                .attr('colspan',$(".jtable-command-column-header").length);
-			$resetbutton = $('<input type="button" class="jtable-toolbarsearch-reset-button" value="Reset"/>').appendTo($reset);
-			$resetbutton.click(function(){
-				$('.jtable-toolbarsearch').val('');
-				self.load({});				
-			});
-			$tr.append($reset);
+				$reset = $('<th></th>')
+	                .addClass('jtable-toolbarsearch-reset')
+	                .attr('colspan',$(".jtable-command-column-header").length);
+				$resetbutton = $('<input type="button" class="jtable-toolbarsearch-reset-button" value="Reset"/>').appendTo($reset);
+				$resetbutton.click(function(){
+					debugger;
+					$('.jtable-toolbarsearch').val('');
+					self.load({});				
+				});
+				$tr.append($reset);
 			}
         },		
 
@@ -70,6 +71,7 @@
 			showButtonPanel: true});
 			}
 			$input.bind('change',function(){
+				debugger;
 				var $q=[];
 				var $opt=[];
 				var $postData={};
@@ -84,7 +86,6 @@
 					});
 				self.load({'q[]':$q,'opt[]':$opt});
 			});
-														
             var $headerContainerDiv = $('<div />')
                 .addClass('jtable-column-header-container');
                 

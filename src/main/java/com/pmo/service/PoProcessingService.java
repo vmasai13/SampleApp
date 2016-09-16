@@ -15,11 +15,11 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
 import org.springframework.stereotype.Service;
 
-import com.pmo.pdfextract.bean.BillLogBean;
-import com.pmo.pdfextract.bean.CounterBean;
+import com.pmo.bean.BillLogBean;
+import com.pmo.bean.CounterBean;
 
 @Service
-public class PdfExtractor {
+public class PoProcessingService {
 	
 //	public static String INVOICE_HOME = System.getenv().get("INVOICE_HOME") + "\\";
 	public static String INVOICE_HOME = "C:\\develop\\code\\SampleApp\\src\\main\\resources\\PO";
@@ -30,7 +30,7 @@ public class PdfExtractor {
 	public CounterBean counterBean = new CounterBean();
 	
 	public static void main(String args[]) {
-		PdfExtractor extract = new PdfExtractor();
+		PoProcessingService extract = new PoProcessingService();
 		extract.processPurchaseOrder();
 	}
 	

@@ -11,17 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.pmo.pdfextract.bean.BillLogBean;
+import com.pmo.bean.BillLogBean;
 import com.pmo.persistence.service.BillLogPersistenceService;
-import com.pmo.service.PdfExtractor;
-
-
+import com.pmo.service.PoProcessingService;
 
 @Controller
 public class PMOController {
 
 	@Autowired
-	PdfExtractor pdfExtract;
+	PoProcessingService poProcessingService;
 	
 	@Autowired
 	BillLogPersistenceService billLogPersistenceService;
@@ -58,7 +56,7 @@ public class PMOController {
 	 */
 	@RequestMapping(value="/selectPurchaseOrder", method= RequestMethod.GET)
 	public String getData(ModelMap model) {
-		List<BillLogBean> mileStoneList = pdfExtract.processPurchaseOrder();
+		List<BillLogBean> mileStoneList = poProcessingService.processPurchaseOrder();
 		for(BillLogBean mileStone : mileStoneList) {
 			billLogPersistenceService.insert(mileStone);
 		}

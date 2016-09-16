@@ -1,4 +1,4 @@
-package com.pmo.pdfextract.bean;
+package com.pmo.bean;
 
 public class CounterBean {
 	
