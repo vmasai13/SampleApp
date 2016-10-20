@@ -19,8 +19,8 @@ public class TestClass {
 	public static void main(String args[]) {
 		TestClass test = new TestClass();
 		try {
-//			test.checkDate();
-			test.checkMongodb();
+			test.checkDate();
+//			test.checkMongodb();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,10 +47,10 @@ public class TestClass {
 	}
 	
 	private void checkDate() throws ParseException {
-		String date1 = "17.06.2016"; // 17-Jun-16
-		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+		String date1 = "31-Jul-16"; // 17-Jun-16
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yy");
 		Date date = (Date) formatter.parse(date1);
-		DateFormat destDf = new SimpleDateFormat("dd-MMM-yy");
+		DateFormat destDf = new SimpleDateFormat("dd-MMM-yyyy");
 		System.out.println(destDf.format(date));
 		
 		String date2 = new SimpleDateFormat("MMM-yy").format(new Date());

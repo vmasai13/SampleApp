@@ -21,6 +21,7 @@
 <script src="../static/jtable/jquery.jtable.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="../static/jtable/extensions/jquery.jtable.editinline.js"></script>
 <script type="text/javascript" src="../static/jtable/extensions/jquery.jtable.toolbarsearch.js"></script>
+<script type="text/javascript" src="../static/others/js/sampleApp.js"></script>
 
 
 <style type="text/css" id="holderjs-style"></style>
@@ -63,33 +64,90 @@
                         if ($selectedRows.length > 0) {
                             //Show selected rows
                             $selectedRows.each(function () {
-                            	// debugger;
                                 record = $(this).data('record');
-                                if (selectedIDs) {
-                                	selectedIDs = selectedIDs + "," + record.id;
-                                } else {
-                                	selectedIDs = record.id;
+                                if (null != record.customerInvoiceNumber && "" != record.customerInvoiceNumber) {
+                                	 if (selectedIDs) {
+                                     	selectedIDs = selectedIDs + "," + record.id;
+                                     } else {
+                                     	selectedIDs = record.id;
+                                     }
                                 }
-                                $('#actionStatus').append(
+                               
+                               /*  $('#actionStatus').append(
                                     '<b>Id: </b>: ' + record.id +
                                     '<br /><b>PO number: </b>:' + record.poNumber + '<br /><br />'
-                                    );
+                                    ); */
+
+                                 // If selected ID's have customer invoice number, please create invoice
+                                 if (selectedIDs) {
+                                 	$.ajax({
+                                 		url: "../app/billlogtableentry/createInvoice",
+                                 		data:{ selectedIDs : selectedIDs},
+                                 		error: function() {
+                                 			$('#actionStatus').append('failure');
+                                 		},
+                                 		success: function(data) {
+                                 			$('#actionStatus').append(data.Result);
+                                 		}                    		
+                                 	})
+                                 } else {
+                                 	var msg = "Please select Invoice(s) with invoice number for invoice creation.";
+                                 	actionStatus('red', msg);
+                                 }
                             });
                         } else {
                             //No rows selected
-                            $('#actionsInfo').append('No row selected! Select rows to see here...');
+                            var msg = "No row selected! Please select atleast one.";
+                        	actionStatus('red', msg);
                         }
-                        
-                    	$.ajax({
-                    		url: "../app/billlogtableentry/createInvoice",
-                    		data:{ selectedIDs : selectedIDs},
-                    		error: function() {
-                    			alert('failure');
-                    		},
-                    		success: function() {
-                    			alert('success');
-                    		}                    		
-                    	})
+                    }
+                },
+                {
+                    icon: '../static/others/img/copy.png',
+                    text: 'Copy',
+                    tooltip: 'Copy Milestones',
+                    click: function () {
+                    	var $selectedRows = $('#BillLogContainer').jtable('selectedRows');
+                        $('#actionStatus').empty();
+                        var selectedIDs = '';
+                        var record;
+                        if ($selectedRows.length > 0) {
+                            //Show selected rows
+                            $selectedRows.each(function () {
+                                record = $(this).data('record');
+                               	 if (selectedIDs) {
+                                 	selectedIDs = selectedIDs + "," + record.id;
+                                 } else {
+                                 	selectedIDs = record.id;
+                                 }
+                               
+                               /* $('#actionStatus').append(
+                                    '<b>Id: </b>: ' + record.id +
+                                    '<br /><b>PO number: </b>:' + record.poNumber + '<br /><br />'
+                                    ); */
+
+                                 // If selected ID's have customer invoice number, please create invoice
+                                 if (selectedIDs) {
+                                 	$.ajax({
+                                 		url: "../app/billlogtableentry/copyMilestone",
+                                 		data:{ selectedIDs : selectedIDs},
+                                 		error: function() {
+                                 			$('#actionStatus').append('failure');
+                                 		},
+                                 		success: function(data) {
+                                 			$('#actionStatus').append(data.Result);
+                                 		}                    		
+                                 	})
+                                 } else {
+                                 	var msg = "Please select Invoice(s) with invoice number for invoice creation.";
+                                 	actionStatus('red', msg);
+                                 }
+                            });
+                        } else {
+                            //No rows selected
+                            var msg = "No row selected! Please select atleast one.";
+                        	actionStatus('red', msg);
+                        }
                     }
                 }]
             },
@@ -203,26 +261,7 @@
                 	sorting: false,
                 	visibility:'hidden'
                 } */
-             }/* ,
-           	 //Register to selectionChanged event to hanlde events
-             selectionChanged: function () {
-                 //Get all selected rows
-                 var $selectedRows = $('#BillLogContainer').jtable('selectedRows');
-                 $('#actionStatus').empty();
-                 if ($selectedRows.length > 0) {
-                     //Show selected rows
-                     $selectedRows.each(function () {
-                         var record = $(this).data('record');
-                         $('#actionStatus').append(
-                             '<b>StudentId</b>: ' + record.billingMonth +
-                             '<br /><b>Name</b>:' + record.billingMonth + '<br /><br />'
-                             );
-                     });
-                 } else {
-                     //No rows selected
-                     $('#SelectedRowList').append('No row selected! Select rows to see here...');
-                 }
-             }, */
+             }
         });
  
         //Load all records when page is first shown

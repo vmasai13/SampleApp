@@ -5,8 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -26,6 +29,7 @@ import org.springframework.stereotype.Service;
 import com.pmo.bean.BillLogBean;
 import com.pmo.bean.InvoiceBean;
 import com.pmo.utilities.BankDetails;
+import com.pmo.utilities.CommonUtility;
 import com.pmo.utilities.NumToWords;
 
 import net.sf.jasperreports.engine.JRException;
@@ -47,6 +51,8 @@ public class InvoiceCreationService {
 	public static final String TEMPLATE_FILE_JUCC = INVOICE_HOME + "\\TM.jrxml";
 	public static final String OUTPUT_PATH = INVOICE_HOME + "\\report\\";
 	public static final String INPUT_FILE = INVOICE_HOME + "\\KLM-MasterOSTracker.xlsx";
+	public static final String TCS_IMAGE = INVOICE_HOME + "\\tcs.jpg";
+	public static final String TATA_IMAGE = INVOICE_HOME + "\\tata.jpg";
 	public static final String TIMESHEET_PATH = INVOICE_HOME + "\\timesheets\\";
 	private static final String WON_JUCC = "2086990";
 	private static final String WON_XF = "XF";
@@ -68,17 +74,19 @@ public class InvoiceCreationService {
 
 	}
 
-	public void createInvoice(BillLogBean billLogBean) {
+	public boolean createInvoice(BillLogBean billLogBean) {
+		boolean createdStatus = false;
 		BankDetails bankDetails = retrieveBankDetails();
 		// TODO: For Only PO's to get processed as of now, Will be extended for DVO's also, so then we will set the InvoiceType to "T&M"
 		// TODO: Populating the details for DVO's will be done in future
 		billLogBean.setInvoiceType("PO");
 		InvoiceBean invoiceBean = populateDetailsToInvoiceBean(bankDetails, billLogBean);
 		if (billLogBean.getInvoiceType().equals("PO")) {
-			createBillLogInvoice(TEMPLATE_FILE, OUTPUT_PATH, invoiceBean);
+			createdStatus = createBillLogInvoice(TEMPLATE_FILE, OUTPUT_PATH, invoiceBean);
 		} else {
-			createDvoInvoice(TEMPLATE_FILE_JUCC, OUTPUT_PATH, invoiceBean);
+			createdStatus = createDvoInvoice(TEMPLATE_FILE_JUCC, OUTPUT_PATH, invoiceBean);
 		}
+		return createdStatus;
 	}
 
 	/**
@@ -96,6 +104,7 @@ public class InvoiceCreationService {
 		invoiceBean.setPONumber(billLogBean.getPoNumber());
 		invoiceBean.setReference("PO: " + billLogBean.getPoNumber());
 		invoiceBean.setMilestoneDesc(billLogBean.getDescription());
+		invoiceBean.setItem(billLogBean.getItem());
 		invoiceBean.setQuantity(billLogBean.getQuantity());
 		invoiceBean.setPricePerUnit(billLogBean.getPricePerUnit());
 
@@ -106,12 +115,17 @@ public class InvoiceCreationService {
 			determineTotalAmount(bankDetails, invoiceBean, milestoneValue);
 		}
 
-		invoiceBean.setClientInvoiceDate(billLogBean.getClientInvoiceDate());
+		invoiceBean.setClientInvoiceDate(CommonUtility.getDateInddMMMyyyy(billLogBean.getClientInvoiceDate()));
 		invoiceBean.setCustomerInvoiceNumber(billLogBean.getCustomerInvoiceNumber());
 		invoiceBean.setBankAccount(bankDetails.getBankAccount());
 		invoiceBean.setBankName(bankDetails.getBankName());
 		invoiceBean.setiBANNo(bankDetails.getiBANNo());
 		invoiceBean.setSwiftCode(bankDetails.getSwiftCode());
+		
+		// Setting the TATA logo and the TCS name as image to the invoice report
+		invoiceBean.setTcsJpgImage(TCS_IMAGE);
+		invoiceBean.setTataJpgImage(TATA_IMAGE);
+		
 		return invoiceBean;
 	}
 
@@ -578,7 +592,8 @@ public class InvoiceCreationService {
 	 * @param targetPath
 	 * @param invoiceBean
 	 */
-	private static void createBillLogInvoice(String templatePath, String targetPath, InvoiceBean invoiceBean) {
+	private static boolean createBillLogInvoice(String templatePath, String targetPath, InvoiceBean invoiceBean) {
+		boolean createdStatus = false;
 		Map<String, Object> params;
 		JasperReport jasperReport;
 		try {
@@ -602,6 +617,7 @@ public class InvoiceCreationService {
 				JasperExportManager.exportReportToPdfFile(jasperPrint,
 						outputFile);
 				System.out.println(outputFile);
+				createdStatus = true;
 			} catch (JRException e) {
 				e.printStackTrace();
 			}
@@ -610,7 +626,7 @@ public class InvoiceCreationService {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-
+		return createdStatus;
 	}
 
 	/**
@@ -622,7 +638,8 @@ public class InvoiceCreationService {
 	 * @throws JRException
 	 * @throws FileNotFoundException
 	 */
-	private static void createDvoInvoice(String templatePath, String targetPath, InvoiceBean invoiceBean) {
+	private static boolean createDvoInvoice(String templatePath, String targetPath, InvoiceBean invoiceBean) {
+		boolean createdStatus = false;
 		Map<String, Object> params;
 		JasperReport jasperReport;
 		try {
@@ -648,6 +665,7 @@ public class InvoiceCreationService {
 				if ((invoiceBean.getCustomerInvoiceNumber() != null) && !invoiceBean.getCustomerInvoiceNumber().equals("")) {
 					mergePdf(outputFile, TIMESHEET_PATH + invoiceBean.getCustomerInvoiceNumber() + ".pdf");
 				}
+				createdStatus = true;
 			} catch (JRException e) {
 				e.printStackTrace();
 			}
@@ -656,6 +674,7 @@ public class InvoiceCreationService {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		return createdStatus;
 	}
 
 	/**

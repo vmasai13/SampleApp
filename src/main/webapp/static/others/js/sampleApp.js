@@ -6,3 +6,7 @@ function fnClickAddRow() {
 	                                      "T&M",
 	                                      "" ] );
 }
+
+function actionStatus(color, msg) {
+	 $('#actionStatus').append('<div style="font-style: bold;color: '+ color +';"> '+ msg + '</div>');
+}

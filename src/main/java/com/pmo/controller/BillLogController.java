@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.pmo.bean.BillLogBean;
 import com.pmo.persistence.service.BillLogService;
 import com.pmo.service.InvoiceCreationService;
+import com.pmo.utilities.CommonUtility;
 
 @Controller
 @RequestMapping(value = "/billlogtableentry", produces = "application/json")
@@ -80,15 +81,39 @@ public class BillLogController {
 		for (String id : selectedId) {
 			List<BillLogBean> billLogList = billLogService.checkId(id);
 			for (BillLogBean billLogBean : billLogList) {
-				if (!billLogBean.getMilestoneStatus().isEmpty() && billLogBean.getMilestoneStatus().equalsIgnoreCase("Approved")
-						&& !billLogBean.getInvoiceStatus().isEmpty() && billLogBean.getInvoiceStatus().equalsIgnoreCase("Create")) {
-					invoiceCreationService.createInvoice(billLogBean);
+				if (CommonUtility.checkPreConditionForCreateInvoice(billLogBean)) {
+					if (invoiceCreationService.createInvoice(billLogBean)) {
+						billLogBean.setInvoiceStatus("Submitted");
+						billLogService.save(billLogBean);
+					}
 					clientInvoiceNumber = clientInvoiceNumber + billLogBean.getCustomerInvoiceNumber();
 				}
 			}
 		}
-		//        billLogMap.put("Record", billLogService.save(setting));
-		//        System.out.println("Create invoice -> "+ setting.getPoNumber() + "|" + setting.getItem() + "|" + setting.getQuantity() + "1 New item saved in database");
+		billLogMap.put("ClientInvoiceNumber", clientInvoiceNumber);
+		billLogMap.put("Result", "OK");
+		return billLogMap;
+	}
+	
+	@RequestMapping(value = "/copyMilestone", method= RequestMethod.GET ) 
+	@ResponseBody
+	public Map<String, Object> copyMilestone(@RequestParam String selectedIDs) {
+		Map<String, Object> billLogMap = new HashMap<String, Object>();
+		String selectedId[] = selectedIDs.split(",");
+		String clientInvoiceNumber = "";
+		for (String id : selectedId) {
+			List<BillLogBean> billLogList = billLogService.checkId(id);
+			for (BillLogBean billLogBean : billLogList) {
+				if (CommonUtility.checkPreConditionForCreateInvoice(billLogBean)) {
+					if (invoiceCreationService.createInvoice(billLogBean)) {
+						billLogBean.setInvoiceStatus("Submitted");
+						billLogService.save(billLogBean);
+					}
+					clientInvoiceNumber = clientInvoiceNumber + billLogBean.getCustomerInvoiceNumber();
+				}
+			}
+		}
+		billLogMap.put("ClientInvoiceNumber", clientInvoiceNumber);
 		billLogMap.put("Result", "OK");
 		return billLogMap;
 	}

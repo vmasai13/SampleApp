@@ -22,6 +22,8 @@
 	<field name="iBANNo" class="java.lang.String"/>
 	<field name="swiftCode" class="java.lang.String"/>
 	<field name="comment" class="java.lang.String"/>
+	<field name="tcsJpgImage" class="java.lang.String"/>
+	<field name="tataJpgImage" class="java.lang.String"/>
 	<group name="page1group">
 		<groupExpression><![CDATA[]]></groupExpression>
 		<groupHeader>
@@ -244,7 +246,7 @@ Customer VAT Number NL0049863269B01]]></text>
 				</staticText>
 				<image scaleImage="RealSize" hyperlinkType="None">
 					<reportElement x="17" y="21" width="397" height="47"/>
-					<imageExpression class="java.io.File"><![CDATA[".\\resources\\tcs.jpg"]]></imageExpression>
+					<imageExpression class="java.io.File"><![CDATA[$F{tcsJpgImage}]]></imageExpression>
 				</image>
 				<textField hyperlinkType="None">
 					<reportElement x="423" y="157" width="80" height="15"/>
@@ -255,7 +257,7 @@ Customer VAT Number NL0049863269B01]]></text>
 				</textField>
 				<image hyperlinkType="None">
 					<reportElement x="467" y="21" width="57" height="40"/>
-					<imageExpression class="java.io.File"><![CDATA[".\\resources\\tata.jpg"]]></imageExpression>
+					<imageExpression class="java.io.File"><![CDATA[$F{tataJpgImage}]]></imageExpression>
 				</image>
 				<textField isStretchWithOverflow="true" hyperlinkType="None">
 					<reportElement x="22" y="402" width="475" height="20"/>

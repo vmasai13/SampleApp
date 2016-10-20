@@ -32,7 +32,8 @@ public class InvoiceBean {
 	private String projectType;
 	private String invoiceType;
 	private boolean isAlreadyProcessed = false;
-	
+	private String tataJpgImage;
+	private String tcsJpgImage;
 	
 	public String getClientInvoiceDate() {
 		return clientInvoiceDate;
@@ -213,6 +214,18 @@ public class InvoiceBean {
 	}
 	public void setCustomerInvoiceNumber(String customerInvoiceNumber) {
 		this.customerInvoiceNumber = customerInvoiceNumber;
+	}
+	public String getTataJpgImage() {
+		return tataJpgImage;
+	}
+	public void setTataJpgImage(String tataJpgImage) {
+		this.tataJpgImage = tataJpgImage;
+	}
+	public String getTcsJpgImage() {
+		return tcsJpgImage;
+	}
+	public void setTcsJpgImage(String tcsJpgImage) {
+		this.tcsJpgImage = tcsJpgImage;
 	}
 
 	public String toString() {
