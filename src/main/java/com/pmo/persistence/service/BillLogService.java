@@ -3,6 +3,7 @@ package com.pmo.persistence.service;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
@@ -30,7 +31,7 @@ public class BillLogService {
         if (!mongoTemplate.collectionExists(COLLECTION_NAME)) {
             mongoTemplate.createCollection(COLLECTION_NAME);
         }
-        if (billLogBean.getId() == null) {
+        if (StringUtils.isBlank(billLogBean.getId())) {
         	billLogBean.setId(UUID.randomUUID().toString());
             mongoTemplate.insert(billLogBean, COLLECTION_NAME);
         }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pmo.bean.BillLogBean;
+import com.pmo.handler.BillLogHandler;
 import com.pmo.persistence.service.BillLogService;
 import com.pmo.service.InvoiceCreationService;
 import com.pmo.utilities.CommonUtility;
@@ -27,6 +28,9 @@ public class BillLogController {
 
 	@Autowired
 	InvoiceCreationService invoiceCreationService;
+	
+	@Autowired
+	BillLogHandler billLogHandler;
 
 	@RequestMapping(value = "/save")
 	@ResponseBody
@@ -78,6 +82,7 @@ public class BillLogController {
 		Map<String, Object> billLogMap = new HashMap<String, Object>();
 		String selectedId[] = selectedIDs.split(",");
 		String clientInvoiceNumber = "";
+		String resultStatus = "";
 		for (String id : selectedId) {
 			List<BillLogBean> billLogList = billLogService.checkId(id);
 			for (BillLogBean billLogBean : billLogList) {
@@ -100,21 +105,16 @@ public class BillLogController {
 	public Map<String, Object> copyMilestone(@RequestParam String selectedIDs) {
 		Map<String, Object> billLogMap = new HashMap<String, Object>();
 		String selectedId[] = selectedIDs.split(",");
-		String clientInvoiceNumber = "";
+		String resultStatus = "";
 		for (String id : selectedId) {
 			List<BillLogBean> billLogList = billLogService.checkId(id);
 			for (BillLogBean billLogBean : billLogList) {
-				if (CommonUtility.checkPreConditionForCreateInvoice(billLogBean)) {
-					if (invoiceCreationService.createInvoice(billLogBean)) {
-						billLogBean.setInvoiceStatus("Submitted");
-						billLogService.save(billLogBean);
-					}
-					clientInvoiceNumber = clientInvoiceNumber + billLogBean.getCustomerInvoiceNumber();
-				}
+				BillLogBean newBillLogBean = billLogHandler.checkAndCreateNewMilestone(billLogBean);
+				billLogMap.put("Record", billLogService.save(newBillLogBean));
+				resultStatus = resultStatus + newBillLogBean.getPoNumber() + ", ";
 			}
 		}
-		billLogMap.put("ClientInvoiceNumber", clientInvoiceNumber);
-		billLogMap.put("Result", "OK");
+		billLogMap.put("Result", "Added new row for PO's : " + resultStatus);
 		return billLogMap;
 	}
 

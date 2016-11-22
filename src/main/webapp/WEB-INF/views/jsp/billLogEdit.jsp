@@ -77,24 +77,24 @@
                                     '<b>Id: </b>: ' + record.id +
                                     '<br /><b>PO number: </b>:' + record.poNumber + '<br /><br />'
                                     ); */
-
-                                 // If selected ID's have customer invoice number, please create invoice
-                                 if (selectedIDs) {
-                                 	$.ajax({
-                                 		url: "../app/billlogtableentry/createInvoice",
-                                 		data:{ selectedIDs : selectedIDs},
-                                 		error: function() {
-                                 			$('#actionStatus').append('failure');
-                                 		},
-                                 		success: function(data) {
-                                 			$('#actionStatus').append(data.Result);
-                                 		}                    		
-                                 	})
-                                 } else {
-                                 	var msg = "Please select Invoice(s) with invoice number for invoice creation.";
-                                 	actionStatus('red', msg);
-                                 }
-                            });
+                            	});
+                               // If selected ID's have customer invoice number, please create invoice
+                               if (selectedIDs) {
+                               	$.ajax({
+                               		url: "../app/billlogtableentry/createInvoice",
+                               		data:{ selectedIDs : selectedIDs},
+                               		error: function() {
+                               			$('#actionStatus').append('failure');
+                               		},
+                               		success: function(data) {
+                               			$('#actionStatus').append(data.Result);
+                               		}                    		
+                               	})
+                               } else {
+                               	var msg = "Please select Invoice(s) with invoice number for invoice creation.";
+                               	actionStatus('red', msg);
+                               }
+                            
                         } else {
                             //No rows selected
                             var msg = "No row selected! Please select atleast one.";
@@ -125,24 +125,22 @@
                                     '<b>Id: </b>: ' + record.id +
                                     '<br /><b>PO number: </b>:' + record.poNumber + '<br /><br />'
                                     ); */
-
-                                 // If selected ID's have customer invoice number, please create invoice
-                                 if (selectedIDs) {
-                                 	$.ajax({
-                                 		url: "../app/billlogtableentry/copyMilestone",
-                                 		data:{ selectedIDs : selectedIDs},
-                                 		error: function() {
-                                 			$('#actionStatus').append('failure');
-                                 		},
-                                 		success: function(data) {
-                                 			$('#actionStatus').append(data.Result);
-                                 		}                    		
-                                 	})
-                                 } else {
-                                 	var msg = "Please select Invoice(s) with invoice number for invoice creation.";
-                                 	actionStatus('red', msg);
-                                 }
                             });
+                            if (selectedIDs) {
+                            	$.ajax({
+                            		url: "../app/billlogtableentry/copyMilestone",
+                            		data:{ selectedIDs : selectedIDs},
+                            		error: function() {
+                            			$('#actionStatus').append('failure');
+                            		},
+                            		success: function(data) {
+                            			$('#actionStatus').append(data.Result);
+                            		}                    		
+                            	})
+                            } else {
+                            	var msg = "Please select Invoice(s) with invoice number for invoice creation.";
+                            	actionStatus('red', msg);
+                            }
                         } else {
                             //No rows selected
                             var msg = "No row selected! Please select atleast one.";
@@ -189,7 +187,7 @@
                 },
                 milestoneStatus: {
                 	title: 'MilestoneStat',
-                	options: { '': '', 'Submitted': 'Submitted', 'Approved': 'Approved', 'Clarity required':'Clarity required'},
+                	options: { '': '', 'Check': 'Check', 'Submitted': 'Submitted', 'Approved': 'Approved', 'Clarity req':'Clarity req'},
                 	sorting: true
                 },
                 invoiceStatus: {
