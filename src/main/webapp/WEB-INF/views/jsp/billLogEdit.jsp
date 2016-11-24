@@ -80,21 +80,17 @@
                             	});
                                // If selected ID's have customer invoice number, please create invoice
                                if (selectedIDs) {
-                               	$.ajax({
-                               		url: "../app/billlogtableentry/createInvoice",
-                               		data:{ selectedIDs : selectedIDs},
-                               		error: function() {
-                               			$('#actionStatus').append('failure');
-                               		},
-                               		success: function(data) {
-                               			$('#actionStatus').append(data.Result);
-                               		}                    		
-                               	})
-                               } else {
-                               	var msg = "Please select Invoice(s) with invoice number for invoice creation.";
-                               	actionStatus('red', msg);
-                               }
-                            
+	                               	$.ajax({
+	                               		url: "../app/billlogtableentry/createInvoice",
+	                               		data:{ selectedIDs : selectedIDs},
+	                               		error: function() {
+	                               			$('#actionStatus').append('failure');
+	                               		},
+	                               		success: function(data) {
+	                               			$('#actionStatus').append(data.Result);
+	                               		}                    		
+	                               	})
+                              }
                         } else {
                             //No rows selected
                             var msg = "No row selected! Please select atleast one.";
@@ -120,11 +116,6 @@
                                  } else {
                                  	selectedIDs = record.id;
                                  }
-                               
-                               /* $('#actionStatus').append(
-                                    '<b>Id: </b>: ' + record.id +
-                                    '<br /><b>PO number: </b>:' + record.poNumber + '<br /><br />'
-                                    ); */
                             });
                             if (selectedIDs) {
                             	$.ajax({
@@ -137,9 +128,45 @@
                             			$('#actionStatus').append(data.Result);
                             		}                    		
                             	})
-                            } else {
-                            	var msg = "Please select Invoice(s) with invoice number for invoice creation.";
-                            	actionStatus('red', msg);
+                            }
+                        } else {
+                            //No rows selected
+                            var msg = "No row selected! Please select atleast one.";
+                        	actionStatus('red', msg);
+                        }
+                    }
+                },
+                {
+                    icon: '../static/others/img/delete.png',
+                    text: 'Del',
+                    tooltip: 'Delete',
+                    click: function () {
+                    	var $selectedRows = $('#BillLogContainer').jtable('selectedRows');
+                        $('#actionStatus').empty();
+                        var selectedIDs = '';
+                        var record;
+                        if ($selectedRows.length > 0) {
+                            //Show selected rows
+                            $selectedRows.each(function () {
+                                record = $(this).data('record');
+                               	 if (selectedIDs) {
+                                 	selectedIDs = selectedIDs + "," + record.id;
+                                 } else {
+                                 	selectedIDs = record.id;
+                                 }
+                            });
+                            if (selectedIDs) {
+                            	$.ajax({
+                            		url: "../app/billlogtableentry/deleteMilestone",
+                            		data:{ selectedIDs : selectedIDs},
+                            		error: function() {
+                            			// $('#actionStatus').append('failure');
+                            			actionStatus('red', "Delete action failed ...");
+                            		},
+                            		success: function(data) {
+                            			$('#actionStatus').append(data.Result);
+                            		}                    		
+                            	})
                             }
                         } else {
                             //No rows selected

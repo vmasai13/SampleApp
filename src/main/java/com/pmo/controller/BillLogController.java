@@ -117,6 +117,20 @@ public class BillLogController {
 		billLogMap.put("Result", "Added new row for PO's : " + resultStatus);
 		return billLogMap;
 	}
+	
+	@RequestMapping(value = "/deleteMilestone", method= RequestMethod.GET ) 
+	@ResponseBody
+	public Map<String, Object> deleteMilestone(@RequestParam String selectedIDs) {
+		Map<String, Object> billLogMap = new HashMap<String, Object>();
+		String selectedId[] = selectedIDs.split(",");
+		String resultStatus = "";
+		for (String id : selectedId) {
+			billLogService.delete(id);
+		}
+		System.out.println(selectedId.length + " - items are deleted from database");
+		billLogMap.put("Result", selectedId.length + " - item(s) deleted from database");
+		return billLogMap;
+	}
 
 	@RequestMapping(value = "/get")
 	@ResponseBody

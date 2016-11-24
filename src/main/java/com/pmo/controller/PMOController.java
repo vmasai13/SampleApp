@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pmo.bean.BillLogBean;
 import com.pmo.persistence.service.BillLogPersistenceService;
+import com.pmo.persistence.service.SettingsService;
 import com.pmo.service.PoProcessingService;
 
 @Controller
@@ -23,6 +24,9 @@ public class PMOController {
 	
 	@Autowired
 	BillLogPersistenceService billLogPersistenceService;
+	
+	@Autowired
+	SettingsService settingsService;
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
@@ -58,6 +62,7 @@ public class PMOController {
 	public String getData(ModelMap model) {
 		List<BillLogBean> mileStoneList = poProcessingService.processPurchaseOrder();
 		for(BillLogBean mileStone : mileStoneList) {
+			mileStone.setCustomerInvoiceNumber(settingsService.findGetLatestInvoiceNumber(mileStone.getClientInvoiceDate()));
 			billLogPersistenceService.insert(mileStone);
 		}
 		return "getPurchaseOrder";

@@ -5,26 +5,32 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.springframework.data.mongodb.core.query.Query;
-
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
-import com.mongodb.DBObject;
 import com.mongodb.Mongo;
-import com.mongodb.util.JSON;
 
 public class TestClass {
 	
 	public static void main(String args[]) {
 		TestClass test = new TestClass();
 		try {
-			test.checkDate();
+			test.check();
+//			test.checkDate();
 //			test.checkMongodb();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private void check() {
+		int invoiceSuffix = 9911;
+		String incrementalNumber = Integer.toString(invoiceSuffix);
+		int count = 0;
+		for (;count < 5 - incrementalNumber.length();) {
+			incrementalNumber = "0" + incrementalNumber;
+		}
+		System.out.println(incrementalNumber);
 	}
 	
 	private void checkMongodb() {

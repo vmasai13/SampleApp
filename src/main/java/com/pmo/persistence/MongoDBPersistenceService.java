@@ -4,6 +4,7 @@
  */
 package com.pmo.persistence;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
@@ -21,7 +22,7 @@ public class MongoDBPersistenceService implements PersistenceService {
     @Override
     public Domain insert(Domain domain) {
 
-        if (domain.getId() == null || domain.getId().isEmpty()) {
+        if (StringUtils.isBlank(domain.getId())) {
             System.out.println("Persisting: {" + domain.toString() + "}");
             mongoTemplate.insert(domain);
             return domain;
