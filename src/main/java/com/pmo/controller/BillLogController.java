@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.pmo.bean.BillLogBean;
 import com.pmo.handler.BillLogHandler;
 import com.pmo.persistence.service.BillLogService;
+import com.pmo.persistence.service.SettingsService;
 import com.pmo.service.InvoiceCreationService;
 import com.pmo.utilities.CommonUtility;
 
@@ -31,6 +32,9 @@ public class BillLogController {
 	
 	@Autowired
 	BillLogHandler billLogHandler;
+	
+	@Autowired
+	SettingsService settingsService;
 
 	@RequestMapping(value = "/save")
 	@ResponseBody
@@ -110,6 +114,8 @@ public class BillLogController {
 			List<BillLogBean> billLogList = billLogService.checkId(id);
 			for (BillLogBean billLogBean : billLogList) {
 				BillLogBean newBillLogBean = billLogHandler.checkAndCreateNewMilestone(billLogBean);
+				String newInvoiceNumber = settingsService.findGetLatestInvoiceNumber(newBillLogBean.getClientInvoiceDate());
+				newBillLogBean.setCustomerInvoiceNumber(newInvoiceNumber);
 				billLogMap.put("Record", billLogService.save(newBillLogBean));
 				resultStatus = resultStatus + newBillLogBean.getPoNumber() + ", ";
 			}

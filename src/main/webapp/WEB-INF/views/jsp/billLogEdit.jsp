@@ -72,11 +72,6 @@
                                      	selectedIDs = record.id;
                                      }
                                 }
-                               
-                               /*  $('#actionStatus').append(
-                                    '<b>Id: </b>: ' + record.id +
-                                    '<br /><b>PO number: </b>:' + record.poNumber + '<br /><br />'
-                                    ); */
                             	});
                                // If selected ID's have customer invoice number, please create invoice
                                if (selectedIDs) {
@@ -90,6 +85,9 @@
 	                               			$('#actionStatus').append(data.Result);
 	                               		}                    		
 	                               	})
+                              } else {
+	                            	var msg = "Invoice number is empty ...";
+	                              	actionStatus('red', msg);
                               }
                         } else {
                             //No rows selected

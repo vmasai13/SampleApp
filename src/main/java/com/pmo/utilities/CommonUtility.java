@@ -58,7 +58,7 @@ public class CommonUtility {
 			case "Dec": month = "12"; break;
 			default: month = "999" ; break;
 		}
-		return invoiceDateSplit[2] + Integer.parseInt(month);
+		return invoiceDateSplit[2] + month;
 	}
 	
 	public static String getIncrementalNumber(int invoiceSuffix) {
