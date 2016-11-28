@@ -52,16 +52,22 @@ public class BillLogService {
      * @param jtSorting
      * @return
      */
-    public List<BillLogBean> list(int jtStartIndex, int jtPageSize, String jtSorting) {
+    public List<BillLogBean> list(int jtStartIndex, int jtPageSize, String jtSorting, String[] filterOptions, String[] filterValues) {
     	Query query = new Query();
+    	// For filterOptions & filterValues query making
+    	if (null != filterOptions && filterOptions.length > 0) {
+    		int count = 0;
+    		for (; count < filterOptions.length ; count++ ) {
+    			// Supports 'AND' condition in filtering
+    			query.addCriteria(Criteria.where(filterOptions[count]).regex(filterValues[count]));
+    		}
+    	}
     	query.skip(jtStartIndex);
     	query.limit(jtPageSize);
     	String stringArray[] = jtSorting.split(" ");
     	Sort sort = new Sort(Direction.fromString(stringArray[stringArray.length - 1]), stringArray[0]);
     	query.with(sort);
-    	
-    	List<BillLogBean> settingss = mongoTemplate.find(query, BillLogBean.class);
-        return settingss;
+    	return mongoTemplate.find(query, BillLogBean.class);
     }
     
     public List<BillLogBean> checkId(String id) {

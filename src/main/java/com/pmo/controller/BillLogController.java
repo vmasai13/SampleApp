@@ -49,10 +49,11 @@ public class BillLogController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> list(int jtStartIndex, int jtPageSize, String jtSorting) {
+	public Map<String, Object> list(int jtStartIndex, int jtPageSize, String jtSorting,
+			@RequestParam(value = "q[]", required = false) final String[] filterValues, @RequestParam(value = "opt[]", required = false) final String[] filterOptions) {
 		Map<String, Object> billLogMap = new HashMap<String, Object>();
 		List<BillLogBean> billLogList = new ArrayList<BillLogBean>();
-		billLogList.addAll(billLogService.list(jtStartIndex, jtPageSize, jtSorting));
+		billLogList.addAll(billLogService.list(jtStartIndex, jtPageSize, jtSorting, filterOptions, filterValues));
 		System.out.println("Received - " + billLogList.size() + " items from database");
 		billLogMap.put("Records", billLogList);
 		billLogMap.put("Result", "OK");

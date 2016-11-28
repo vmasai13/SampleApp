@@ -52,6 +52,7 @@
 
         /* Creates a header cell for given field.
         *  Returns th jQuery object.
+        *  Vijay - This is for tool box filtering for the jtable, which sends filter values and filter options
         *************************************************************************/		
         _toolbarsearch_createHeaderCellForField: function (fieldName, field) {
 			var self = this;
@@ -71,7 +72,6 @@
 			showButtonPanel: true});
 			}
 			$input.bind('change',function(){
-				debugger;
 				var $q=[];
 				var $opt=[];
 				var $postData={};

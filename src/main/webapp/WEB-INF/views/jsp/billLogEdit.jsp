@@ -44,7 +44,7 @@
             jqueryuiTheme: true, // For the theme effect
             defaultSorting: 'projectType',
             editinline:{enable:true},
-            toolbarsearch : false,
+            toolbarsearch : true,
             toolbar: {
                 items: [/* {
                     icon: '/images/excel.png',
