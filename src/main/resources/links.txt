@@ -15,4 +15,8 @@ Database tables:
 3. Export functions of all types at datatables - https://datatables.net/extensions/tabletools/, https://github.com/hikalkan/jtable/issues/1475
 4. {DONE}	DataTable: Drop down values are not getting displayed properly - DONE
 5. {DONE}	JTable: In-line edit function in - Check this - https://github.com/hikalkan/jtable/issues/302
-6. {ON HOLD}JTable: Custom column filtering - https://github.com/hikalkan/jtable/issues/302  
+6. {DONE} JTable: Custom column filtering - https://github.com/hikalkan/jtable/issues/302  
+7. Business implementation w.r.t to ROLES and responsibilities
+8. ADMIN, USERS, SUPER ADMIN
+9. Login page for the application.
+10. PO document upload functionality for processing.

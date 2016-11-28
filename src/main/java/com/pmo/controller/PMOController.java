@@ -53,6 +53,14 @@ public class PMOController {
 		return "billLogView";
 	}
 	
+	@RequestMapping(value="/pieChartForPayment", method=RequestMethod.GET)
+	public String pieChartForPayment(ModelMap model) {
+		List<BillLogBean> output = billLogPersistenceService.findAll();
+		model.addAttribute("Record", output);
+		model.addAttribute("message", "Spring 3 MVC Hello World");
+		return "pieChartForPayment";
+	}
+	
 	/**
 	 * To process the purchase order's and save it in mongo DB
 	 * @param model
@@ -68,7 +76,7 @@ public class PMOController {
 		return "getPurchaseOrder";
 	}
 	
-	@RequestMapping(value="/getBillLogData", method = RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/getBillLogData", method = RequestMethod.GET, produces="application/json") // This method is changed to GET in-order to get access to front end calls
 	public @ResponseBody Map<String, Object> getBillLogData() {
 		Map<String, Object> settingsMap = new HashMap<String, Object>();
 		List<BillLogBean> output = billLogPersistenceService.findAll();

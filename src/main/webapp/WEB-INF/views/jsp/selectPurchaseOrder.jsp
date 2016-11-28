@@ -44,7 +44,7 @@ function onSubmit() {
 		</div>
 	</div>
 	
-<form method="post" action="/SampleApp/app/processPurchaseOrder" name="submit" enctype="multipart/form-data">
+<form method="post" action="/SampleApp/app/getBillLogData" name="submit" enctype="multipart/form-data">
 	<input type="file" id="myFiles" multiple size="50" onchange="myFunction();" accept=".pdf"/>
 	<div><p id="status"></p></div>
 	<input type="hidden" id="filePath" value=""/>

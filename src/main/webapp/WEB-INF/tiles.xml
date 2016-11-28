@@ -26,6 +26,13 @@
        <!--  <put-attribute name="body" value="/WEB-INF/views/jsp/billLog.jsp" />   -->
     </definition>
     
+    <!-- For Viewing the charts for payments -->
+    <definition name="pieChartForPayment" extends="base.definition">  
+        <put-attribute name="title" value="Payment chart"  type="string"/>  
+        <put-attribute name="body" value="/WEB-INF/views/jsp/pieChartForPayment.jsp" />  
+    </definition>
+    
+    
     <definition name="getPurchaseOrder" extends="base.definition">  
         <put-attribute name="title" value="Process Purchase Order"  type="string"/>  
         <put-attribute name="body" value="/WEB-INF/views/jsp/selectPurchaseOrder.jsp" />  

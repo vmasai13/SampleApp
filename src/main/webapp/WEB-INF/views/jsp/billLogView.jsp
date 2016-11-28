@@ -61,11 +61,11 @@
 				onclick="window.location='index';">Back</button>
 		</div>
 	</div>
-	<div class="hdLft">
+	<!-- <div class="hdLft">
 		<button type="button"
 			class="btn btn-primary btn-lg div-create-scenario"
 			onclick="fnClickAddRow();">Add New</button>
-	</div>
+	</div> -->
 	
 	<div id="container">
 		<div id="demo">

@@ -29,15 +29,15 @@
 								</div>
 							</a>								
 						</div>
-						<div class="col-md-6">
-							<a href="billLogEdit">
+						<div class="col-md-4">
+							<a href="pieChartForPayment">
 							    <div class="thumbnail indexthumb">
-									<img src="../static/img/report-writing.jpg" alt="" style="min-height:160px;height:160px;min-width:286px;width:386px;">
-									<div class="caption" align="center">
-										<h4 class="title-text">Bill logs</h4>
-										<p><h5 class="title-text">Only for EDITING and UPDATING</h5></p>
-									</div>
-								</div>
+							        <img src="../static/img/KLM_kiosks.jpg" alt="" style="min-height:100px;height:100px;min-width:160px;width:160px;">
+							      	<div class="caption" align="center">
+								        <h4 class="title-text">Pie Chart</h4>
+								        </p><h5 class="title-text"> Payment statistics with respect to your project. </h5></p>
+								    </div>
+							    </div>
 							</a>								
 						</div>
 					</div>
@@ -54,17 +54,19 @@
 								</div>
 							</a>								
 						</div>
-						<!-- <div class="col-md-4">
-							<a href="kioskSeriesConfiguration">
+						<div class="col-md-6">
+							<a href="billLogEdit">
 							    <div class="thumbnail indexthumb">
-							        <img src="../static/img/KLM_kiosks.jpg" alt="" style="min-height:100px;height:100px;min-width:160px;width:160px;">
-							      	<div class="caption" align="center">
-								        <h4 class="title-text">Kiosk Series Configuration</h4>
-								        </p><h5 class="title-text">Configure the kiosk series data which is used to calculate the various reports.</h5></p>
-								    </div>
-							    </div>
+									<img src="../static/img/report-writing.jpg" alt="" style="min-height:160px;height:160px;min-width:286px;width:386px;">
+									<div class="caption" align="center">
+										<h4 class="title-text">Bill logs</h4>
+										<p><h5 class="title-text">Only for EDITING and UPDATING</h5></p>
+									</div>
+								</div>
 							</a>								
 						</div>
+						
+						<!-- 
 						 <div class="col-md-4">
 							<a href="settings">
 								<div class="thumbnail indexthumb">
